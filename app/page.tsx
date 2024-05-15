@@ -11,7 +11,7 @@ export default function Home() {
   const [plagiarisedText, setPlagiarisedText] = useState("");
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState('');
   
 
 
@@ -41,7 +41,7 @@ export default function Home() {
 
   const handleSubmit = async () => {
     setLoading(true);
-    setError(null);
+    setError('');
     setResult(null);
 
     try {
@@ -64,7 +64,7 @@ export default function Home() {
     
       const responseData = await response.json();
       setResult(responseData);
-    } catch (error) {
+    } catch (fetchError) {
       setError('An error occurred while fetching data');
     } finally {
       setLoading(false);
