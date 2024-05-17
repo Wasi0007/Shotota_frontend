@@ -5,16 +5,21 @@ import { Textarea } from "@/components/ui/textarea";
 import { DataTable } from '@/components/ui/data-table';
 import { columns } from './Results/columns';
 
+type ResultItem = {
+  score: string;
+  corpus_sentence: string;
+  plagiarism_sentence: string;
+};
+
+type ResultType = ResultItem[];
 
 export default function Home() {
   const [corpusText, setCorpusText] = useState("");
   const [plagiarisedText, setPlagiarisedText] = useState("");
-  const [result, setResult] = useState(null);
+  const [result, setResult] = useState<ResultType | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   
-
-
   const countWords = (text: string) => {
     return text.trim().split(/\s+/).filter(Boolean).length;
   };
