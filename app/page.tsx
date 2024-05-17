@@ -106,7 +106,9 @@ export default function Home() {
         {error && <p className='text-4xl flex item-center justify-center px-10'>Error: {error}</p>}
         {result && (
           <div className='px-10 py-4'>
-            <h2 className='text-5xl font-bold flex item-center justify-center mb-6'>Result: {result.length > 0 ? result[0].score : 0}%</h2>
+            <h2 className='text-5xl font-bold flex item-center justify-center mb-6'>
+              Result: {result.length > 0 ? `${parseFloat(result[0].score).toFixed(2)}%` : '0.00%'}
+            </h2>
             <DataTable columns={columns} data={result}/> 
           </div>
         )}
